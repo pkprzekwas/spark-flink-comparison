@@ -1,8 +1,8 @@
-SPARK_HOME  ?= $$HOME/spark-2.3.0-bin-hadoop2.7
-SPARK_BIN   := $(SPARK_HOME)/bin
-SUBMIT	    := $(SPARK_BIN)/spark-submit
+SPARK_HOME ?= $$HOME/spark-2.3.0-bin-hadoop2.7
+SPARK_BIN := $(SPARK_HOME)/bin
+SUBMIT := $(SPARK_BIN)/spark-submit
 
-RM	    := rm -rf
+RM := rm -rf
 
 
 example-build:
