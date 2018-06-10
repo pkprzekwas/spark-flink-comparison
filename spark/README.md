@@ -2,9 +2,8 @@
 
 ### Running simple job
 
-This part is fully focused on presenting the simpliest way to run a Spark job locally. It consists
-of simple script which reads content of `/etc/hosts` hence it is dedicated for UNIX machines. SBT is
-used to setup dependencies, compile and build a `jar` file.
+This part is focused on the simpliest way to run a Spark job locally. It consists
+of simple script which reads content of `/etc/hosts`, hence it is dedicated for UNIX machines.
 
 Prerequisite: `SBT`
 
