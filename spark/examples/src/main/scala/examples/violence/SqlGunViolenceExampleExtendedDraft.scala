@@ -1,10 +1,10 @@
-package examples
+package examples.violence
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
 
-object SparkSqlGunViolenceExample {
+object SqlGunViolenceExampleExtendedDraft {
 
   // More on the dataset: https://www.kaggle.com/jameslko/gun-violence-data
   private final val GunViolenceDataset = "/home/pprzekwa/datasets/gun-violence-data_01-2013_03-2018.csv"
