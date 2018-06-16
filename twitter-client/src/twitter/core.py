@@ -1,6 +1,6 @@
 import tweepy
 
-from src.logger import logger
+from src.config.logger import logger
 
 
 class TwitterApi(tweepy.API):

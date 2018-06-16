@@ -12,3 +12,9 @@ programming_filters = [
     *combine_filter('JavaScript'),
     *combine_filter('Java Script'),
 ]
+
+world_cup_filters = [
+    *combine_filter('FIFA'),
+    *combine_filter('Russia'),
+    *combine_filter('World Cup')
+]
