@@ -47,3 +47,6 @@ coverage.xml
 
 # Translations
 *.mo
+
+# Project secrets
+secrets

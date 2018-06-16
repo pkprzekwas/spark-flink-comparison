@@ -12,10 +12,10 @@ class Config:
         app_name = os.getenv('TW_APP_NAME', 'twitter-client')
 
         credentials = dict(
-            consumer_key=os.getenv('TW_CONSUMER_KEY', None),
-            consumer_secret=os.getenv('TW_CONSUMER_SECRET', None),
-            access_token=os.getenv('TW_ACCESS_TOKEN', None),
-            access_token_secret=os.getenv('TW_ACCESS_TOKEN_SECRET', None)
+            consumer_key=os.environ.get('TW_CONSUMER_KEY', None),
+            consumer_secret=os.environ.get('TW_CONSUMER_SECRET', None),
+            access_token=os.environ.get('TW_ACCESS_TOKEN', None),
+            access_token_secret=os.environ.get('TW_ACCESS_TOKEN_SECRET', None)
         )
 
         if not all(credentials.values()):
@@ -24,7 +24,7 @@ class Config:
         return cls(app_name=app_name, credentials=credentials)
 
     def __init__(self, app_name, credentials):
-        self.app_name = app_name,
+        self.app_name = app_name
         self.consumer_key = credentials['consumer_key']
         self.consumer_secret = credentials['consumer_secret']
         self.access_token = credentials['access_token']
