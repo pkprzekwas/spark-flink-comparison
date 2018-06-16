@@ -1,12 +1,17 @@
-import tweepy
-
 from src.config import Config
-from src.logger import logger
+from src.twitter import TwitterApi, TwitterStream
+from src.filters import programming_filters
 
 
 def main():
     config = Config.build()
-    logger.info(f'Starting {config.app_name}...')
+    api = TwitterApi.build(auth_config=config.auth)
+    stream = TwitterStream.build(
+        api=api,
+        filters=programming_filters,
+        result_file=config.result_file
+    )
+    stream.run()
 
 
 if __name__ == '__main__':
