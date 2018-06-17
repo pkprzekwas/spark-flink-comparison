@@ -6,6 +6,7 @@ target/
 
 .gitignore.swp
 spark-warehouse/
+project/
 twitter-client/.venv/
 /__pycache__/
 
