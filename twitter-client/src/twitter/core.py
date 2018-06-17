@@ -1,3 +1,5 @@
+import json
+
 import tweepy
 
 
@@ -38,7 +40,9 @@ class TwitterStreamListener(tweepy.StreamListener):
         self._sink = sink
 
     def on_status(self, status):
-        self._sink.send()
+        data = status._json
+        encoded_data = json.dumps(data).encode('utf-8')
+        self._sink.send(encoded_data)
 
     def on_error(self, status_code):
         if status_code == 420:

@@ -12,7 +12,7 @@ class Config:
         sink = SinkConfig.build()
         return cls(app_name=app_name, auth=auth, sink=sink)
 
-    def __init__(self, app_name, result_file, auth, sink):
+    def __init__(self, app_name, auth, sink):
         self.app_name = app_name
         self.auth = auth
         self.sink = sink

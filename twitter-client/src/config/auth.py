@@ -14,13 +14,13 @@ class AuthConfig:
         if not all(credentials.values()):
             raise AuthConfigurationError('Please provide credentials for Tweeter API.')
 
-        return cls(credentials=credentials)
+        return cls(**credentials)
 
-    def __init__(self, credentials):
-        self.consumer_key = credentials['consumer_key']
-        self.consumer_secret = credentials['consumer_secret']
-        self.access_token = credentials['access_token']
-        self.access_token_secret = credentials['access_token_secret']
+    def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
+        self.consumer_key = consumer_key
+        self.consumer_secret = consumer_secret
+        self.access_token = access_token
+        self.access_token_secret = access_token_secret
 
 
 class AuthConfigurationError(Exception):
