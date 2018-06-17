@@ -2,6 +2,8 @@ import json
 
 import tweepy
 
+from src.config.logger import logger
+
 
 class TwitterApi(tweepy.API):
     @classmethod
@@ -45,5 +47,6 @@ class TwitterStreamListener(tweepy.StreamListener):
         self._sink.send(encoded_data)
 
     def on_error(self, status_code):
+        logger.error(status_code)
         if status_code == 420:
             return False

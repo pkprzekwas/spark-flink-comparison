@@ -1,6 +1,6 @@
 # Running Kafka locally
 
-### Prerequisites:
+### Prerequisites
 - Docker
 - Docker-compose
 - Apache Kafka (version - 1.1.0)

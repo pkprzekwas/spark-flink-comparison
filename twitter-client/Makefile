@@ -5,10 +5,9 @@ VENV_BIN    := $(VENV_DIR)/bin
 PYTHONPATH	:= $$PYTHONPATH:$(shell pwd)
 
 PY_BASE	    := /usr/bin/python3.6
-PY	    	:= $(PYTHONPATH) $(VENV_BIN)/python
+PY	    	:= PYTHONPATH=$(PYTHONPATH) $(VENV_BIN)/python
 PIP	    	:= $(VENV_BIN)/pip
 VAULT	    := $(VENV_BIN)/ansible-vault
-
 
 venv-create:
 	@test ! -d $(VENV_DIR) && \
@@ -25,4 +24,7 @@ vault-decrypt:
 	@$(VAULT) decrypt --output=secrets app_envs
 
 app-start:
-	@source secrets; $(PY) src/main.py
+	@source secrets; env | grep TW_; $(PY) src/main.py
+
+app-kafka-debug:
+	@$(PY) utils/apache_kafka_consumer.py
