@@ -4,7 +4,7 @@ import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 
-object SqlGunViolenceExample {
+object Application {
 
   // More on the dataset: https://www.kaggle.com/jameslko/gun-violence-data
   private final val GunViolenceDataset = "/home/pprzekwa/datasets/gun-violence-data_01-2013_03-2018.csv"

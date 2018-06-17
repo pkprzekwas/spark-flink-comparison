@@ -1,15 +1,21 @@
-SPARK_HOME ?= $$HOME/spark-2.3.0-bin-hadoop2.7
-SPARK_BIN := $(SPARK_HOME)/bin
-SUBMIT := $(SPARK_BIN)/spark-submit
+SHELL	:= /bin/bash
+RM 		:= rm -rf
 
-RM := rm -rf
+SPARK_HOME 	?= $$HOME/lib/spark-2.3.0-bin-hadoop2.7
+SPARK_BIN 	:= $(SPARK_HOME)/bin
+SUBMIT 		:= $(SPARK_BIN)/spark-submit
 
 
-example-build:
-	@cd simple; sbt package
+NAME 			?= spark-examples
+VERSION 		?= 1.0
+SCALA_VERSION 	?= 2.11
+JAR 			:= target/scala-$(SCALA_VERSION)/$(NAME)_$(SCALA_VERSION)-$(VERSION).jar
 
-example-run: example-build
-	@cd simple; $(SUBMIT) --class "SimpleApp" --master local[*] target/scala-2.11/simple-project_2.11-1.0.jar
+build:
+	@cd examples; sbt package
 
-example-clean:
-	@cd simple; $(RM) spark-warehouse/ project/ target/ | echo "Example project is clean"
+run:
+	cd examples; $(SUBMIT) --class "examples.sql.Application" --master local[*] $(JAR)
+
+clean:
+	@cd examples; $(RM) spark-warehouse/ project/ target/ | echo "Example project is clean"
