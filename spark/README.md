@@ -1,18 +1,28 @@
 # Apache Spark
 
-### Running simple job
+### Prerequisites
+- `SBT`
+- Spark (version 2.3)
 
-This part is focused on the simpliest way to run a Spark job locally. It consists
-of simple script which reads content of `/etc/hosts`, hence it is dedicated for UNIX machines.
-
-Prerequisite: `SBT`
-
-Build and run simple script:
+### Quick start
+Build and run script:
 ```bash
-make example-run
+make build
+APP=<app_name> make run
 ```
-To clean build artefacts
+Available apps:
+- sql (default)
+- kafka
+- streaming
+
+To clean artifacts:
 ```bash
-make example-clean
+make clean
 ```
 
+### Tips and Tricks
+
+##### Running in Intellij
+1. Open the project in Intellij.
+2. Find `build.sbt` file.
+3. Run `Import project`
