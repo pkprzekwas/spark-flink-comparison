@@ -5,7 +5,7 @@ dedicated sink. Available sinks are: Apache Kafka, file and console.
 
 ### Quick Start (Kafka Sink)
 
-1. [Setup local Apache Kafka.](../kafka/README.md)
+1. [Setup Apache Kafka locally.](../kafka/README.md)
 2. Create virtualenv and install requirements:
 ```bash
 make deps-install
@@ -14,8 +14,7 @@ make deps-install
 ```bash
 make vault-decrypt
 ```
-You can also provide your own configuration and put to a `secrets` file. 
-Example:
+You can also provide your own configuration and put it to a file named `secrets`. Example:
 ```bash
 export TW_APP_NAME=Twitter-API-Client
 export TW_CONSUMER_KEY=...
@@ -32,7 +31,7 @@ export TW_SINK_FILE=/tmp/twitter-api-results
 ```bash
 make app-start
 ```
-5. To test if everything works correctly run Kafka consumer. 
+5. Test if everything works correctly using Kafka consumer script. 
 ```bash
 make app-kafka-debug
 ```
