@@ -1,11 +1,11 @@
 # Running Kafka locally
 
-##### Prerequisites:
+### Prerequisites:
 - Docker
 - Docker-compose
 - Apache Kafka (version - 1.1.0)
 
-##### Quick start
+### Quick start
 1. Start Zookeeper instances in using Docker:
 ```bash
 make zookeeper-start
@@ -21,7 +21,7 @@ make kafka-start
 ```
 At this point you should be able to connect to your Kafka instance on `http://localhost:9092`.
 
-##### Cleaning up
+### Cleaning up
 1. Stop your Kafka server using `^C`.
 2. Kill Zookeeper containers:
 ```bash
