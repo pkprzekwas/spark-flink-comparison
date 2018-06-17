@@ -1,16 +1,23 @@
+from kafka import KafkaProducer
+
 from src.config.core import Config
 from src.twitter.core import TwitterApi, TwitterStream
-from src.twitter.filters import programming_filters
+from src.twitter.filters import world_cup_filters
+from src.twitter.sinks import KafkaSink
 
 
 def main():
     config = Config.build()
+
     api = TwitterApi.build(auth_config=config.auth)
-    print(programming_filters)
+
+    kafka_producer = KafkaProducer(bootstrap_servers=config.kafka.url)
+    kafka_sink = KafkaSink(topic=config.kafka.topic, producer=kafka_producer)
+
     stream = TwitterStream.build(
         api=api,
-        filters=programming_filters,
-        result_file=config.result_file
+        filters=world_cup_filters,
+        sink=kafka_sink
     )
     stream.run()
 

@@ -1,7 +1,5 @@
 import tweepy
 
-from src.config.logger import logger
-
 
 class TwitterApi(tweepy.API):
     @classmethod
@@ -19,10 +17,10 @@ class TwitterApi(tweepy.API):
 
 class TwitterStream:
     @classmethod
-    def build(cls, api, filters=None, result_file=None):
+    def build(cls, api, filters=None, sink=None):
         stream = tweepy.Stream(
             auth=api.auth,
-            listener=TwitterStreamListener(result_file=result_file)
+            listener=TwitterStreamListener(sink)
         )
         return cls(stream=stream, filters=filters)
 
@@ -35,16 +33,12 @@ class TwitterStream:
 
 
 class TwitterStreamListener(tweepy.StreamListener):
-
-    def __init__(self, result_file=None):
+    def __init__(self, sink=None):
         super().__init__()
-        self.result_file = result_file
+        self._sink = sink
 
     def on_status(self, status):
-        logger.info(status.text)
-        if self.result_file:
-            with open(self.result_file, "a") as f:
-                f.write(status.text)
+        self._sink.send()
 
     def on_error(self, status_code):
         if status_code == 420:
