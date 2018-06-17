@@ -1,11 +1,8 @@
 package clickstream
 
 import java.io.FileWriter
-
 import scala.io.Source
-
 import scala.util.Random
-
 import config.Settings
 
 
